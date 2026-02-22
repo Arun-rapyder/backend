@@ -16,7 +16,7 @@ jobs:
   # =========================
   dev:
     if: github.ref_name == 'main'
-    uses: Tohands-Private-Limited/deployment-workflows/.github/workflows/centralized-workflow.yaml@main
+    uses: Arun-rapyder/deployemnt-workflow/.github/workflows/centralized-workflow.yml@main
     with:
       environment: dev
       source_branch: main
