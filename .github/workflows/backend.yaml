@@ -28,7 +28,7 @@ jobs:
       helm_values_file: charts/tohands-backend/dev-values.yaml
       eks_cluster: dev-eks-cluster
       aws_region: ap-south-1
-    #   argocd_server: argocd.dev.tohands.in
+      argocd_server: argocd.dev.tohands.in
     #   sonar_host_url: https://sonarqube.tohands.in/
     #   sonar_project_key: tohands-backend-internal
     # secrets:
