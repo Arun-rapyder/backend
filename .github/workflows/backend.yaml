@@ -2,14 +2,14 @@ name: GitOps EKS Deployment – Multi Env
 
 on:
   push:
-    branches: [main]
-
-workflow_dispatch: 
-  inputs: 
-    environment: 
-      description: 'Target environment (dev, stage, stage-dr, prod, prod-dr)' 
-      required: true 
-      default: 'main'
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target environment (dev, stage, stage-dr, prod, prod-dr)'
+        required: true
+        default: 'dev'
 
 permissions:
   id-token: write
@@ -22,7 +22,7 @@ jobs:
   # DEV
   # =========================
   dev:
-    if: github.ref_name == 'main'
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'dev' || github.ref_name == 'main'
     uses: Arun-rapyder/deployemnt-workflow/.github/workflows/centralized-workflow.yml@main
     with:
       environment: dev
@@ -36,6 +36,9 @@ jobs:
       eks_cluster: dev-eks-cluster
       aws_region: ap-south-1
       argocd_server: argocd.dev.tohands.in
+    secrets:
+      ARGO_TOKEN: ${{ secrets.ARGO_DEV_TOKEN }}
+
     #   sonar_host_url: https://sonarqube.tohands.in/
     #   sonar_project_key: tohands-backend-internal
     # secrets:
