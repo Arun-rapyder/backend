@@ -29,11 +29,10 @@ jobs:
       eks_cluster: dev-eks-cluster
       aws_region: ap-south-1
       argocd_server: argocd.dev.tohands.in
-      argocd_token: ${{ secrets.ARGO_DEV_TOKEN }}
       sonar_host_url: https://sonarqube.tohands.in/
       sonar_project_key: tohands-backend-internal
-    secrets: inherit
-
+    secrets:
+      ARGO_TOKEN: ${{ secrets.ARGO_DEV_TOKEN }}
 
   # =========================
   # STAGE
@@ -53,9 +52,8 @@ jobs:
       eks_cluster: stage-eks-cluster
       aws_region: ap-south-1
       argocd_server: argocd.stage.tohands.in
-      argocd_token: ${{ secrets.ARGO_STAGE_TOKEN }}
-    secrets: inherit
-
+    secrets:
+      ARGO_TOKEN: ${{ secrets.ARGO_STAGE_TOKEN }}
 
   # =========================
   # STAGE DR
@@ -76,9 +74,8 @@ jobs:
       eks_cluster: stage-dr-eks-cluster
       aws_region: us-east-1
       argocd_server: argocd.stage-dr.tohands.in
-      argocd_token: ${{ secrets.ARGO_STAGE_DR_TOKEN }}
-    secrets: inherit
-
+    secrets:
+      ARGO_TOKEN: ${{ secrets.ARGO_STAGE_DR_TOKEN }}
 
   # =========================
   # PROD
@@ -98,9 +95,8 @@ jobs:
       eks_cluster: prod-eks-cluster
       aws_region: us-west-2
       argocd_server: argocd.prod.tohands.in
-      argocd_token: ${{ secrets.ARGO_PROD_TOKEN }}
-    secrets: inherit
-
+    secrets:
+      ARGO_TOKEN: ${{ secrets.ARGO_PROD_TOKEN }}
 
   # =========================
   # PROD DR
@@ -121,5 +117,5 @@ jobs:
       eks_cluster: prod-dr-eks-cluster
       aws_region: us-east-1
       argocd_server: argocd.prod-dr.tohands.in
-      argocd_token: ${{ secrets.ARGO_PROD_DR_TOKEN }}
-    secrets: inherit
+    secrets:
+      ARGO_TOKEN: ${{ secrets.ARGO_PROD_DR_TOKEN }}
